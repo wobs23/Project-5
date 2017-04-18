@@ -5,7 +5,10 @@ import java.util.NoSuchElementException;
 
 /**
  * This provides implementation for some of the LList methods.
- *
+ * @author Brendan Kelly bmkelly    
+ * @version 4.18.2017
+ * @param <E> is a generic type so we can store what we 
+ * like in this linked list
  */
 public class DLList<E> {
 
@@ -156,7 +159,9 @@ public class DLList<E> {
         return lastIndexOf(obj) != -1;
     }
     
-    
+    /**
+     * sorts the linked list by Artist of song
+     */
     public void sortArtist()
     {
         if (size() == 1)
@@ -164,14 +169,17 @@ public class DLList<E> {
             return;
         }
         
-        for (Node<E> begin = head.next(); begin.next() != tail; begin = begin.next())
+        for (Node<E> begin = head.next(); begin.next() != tail; 
+                begin = begin.next())
         {
             Node<E> small = begin;
-            for (Node<E> check = begin.next(); check != tail; check = check.next())
+            for (Node<E> check = begin.next(); check != tail; 
+                    check = check.next())
             {
                 Song smallData = (Song)small.getData();
                 Song checkData = (Song)check.getData();
-                if (checkData.getArtist().compareToIgnoreCase(smallData.getArtist()) < 0)
+                if (checkData.getArtist()
+                        .compareToIgnoreCase(smallData.getArtist()) < 0)
                 {
                     small = check;
                 }
@@ -181,6 +189,9 @@ public class DLList<E> {
         }
     }
     
+    /**
+     * sorts the linked list by title of song
+     */
     public void sortTitle()
     {
         if (size() == 1)
@@ -188,27 +199,29 @@ public class DLList<E> {
             return;
         }
         
-        for (Node<E> begin = head.next(); begin.next() != tail; begin = begin.next())
+        for (Node<E> begin = head.next(); begin.next() != tail; 
+                begin = begin.next())
         {
             Node<E> small = begin;
-            for (Node<E> check = begin.next(); check != tail; check = check.next())
+            for (Node<E> check = begin.next(); check != tail; 
+                    check = check.next())
             {
                 Song smallData = (Song)small.getData();
                 Song checkData = (Song)check.getData();
-                //System.out.println("CHECK " + checkData.getTitle().substring(0, 1));
-                //System.out.println("SMALL " + smallData.getTitle().substring(0, 1));
-                if (checkData.getTitle().compareToIgnoreCase(smallData.getTitle()) <= 0)
+                if (checkData.getTitle()
+                        .compareToIgnoreCase(smallData.getTitle()) <= 0)
                 {
-                    //System.out.println("SMALLER");
                     small = check;
                 }
             }
             swap(small, begin);
             begin = small;
-            //System.out.println(this);
         }
     }
     
+    /**
+     * sorts linked list by genre of song
+     */
     public void sortGenre()
     {
         if (size() == 1)
@@ -216,28 +229,29 @@ public class DLList<E> {
             return;
         }
         
-        for (Node<E> begin = head.next(); begin.next() != tail; begin = begin.next())
+        for (Node<E> begin = head.next(); begin.next() != tail; 
+                begin = begin.next())
         {
             Node<E> small = begin;
-            //System.out.println("BEGIN " + begin.getData());
-            for (Node<E> check = begin.next(); check != tail; check = check.next())
+            for (Node<E> check = begin.next(); check != tail; 
+                    check = check.next())
             {
                 Song smallData = (Song)small.getData();
                 Song checkData = (Song)check.getData();
-                //System.out.println("CHECK " + checkData.getGenre().substring(0, 1));
-                //System.out.println("SMALL " + smallData.getGenre().substring(0, 1));
-                if (checkData.getGenre().substring(0, 1).compareToIgnoreCase(smallData.getGenre().substring(0, 1)) <= 0)
+                if (checkData.getGenre()
+                        .compareToIgnoreCase(smallData.getGenre()) <= 0)
                 {
-                    //System.out.println("SMALLER");
                     small = check;
                 }
             }
             swap(small, begin);
             begin = small;
-            //System.out.println(this);
         }
     }
     
+    /**
+     * sorts linked list by year of song
+     */
     public void sortYear()
     {
         if (size() == 1)
@@ -245,10 +259,12 @@ public class DLList<E> {
             return;
         }
         
-        for (Node<E> begin = head.next(); begin.next() != tail; begin = begin.next())
+        for (Node<E> begin = head.next(); begin.next() != tail; 
+                begin = begin.next())
         {
             Node<E> small = begin;
-            for (Node<E> check = begin.next(); check != tail; check = check.next())
+            for (Node<E> check = begin.next(); check != tail; 
+                    check = check.next())
             {
                 Song smallData = (Song)small.getData();
                 Song checkData = (Song)check.getData();
@@ -297,7 +313,9 @@ public class DLList<E> {
         if (node1 == node2Prev) {
             node1.setPrevious(node2);
             node2.setNext(node1);
-        } else {
+        } 
+        else 
+        {
             node1.setPrevious(node2Prev);
             if (node2Prev != null) {
                 node2Prev.setNext(node1);
@@ -311,7 +329,8 @@ public class DLList<E> {
 
         if (node1 == head) {
             head = node2;
-        } else if (node2 == head) {
+        } 
+        else if (node2 == head) {
             head = node1;
         }
     }

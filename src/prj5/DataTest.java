@@ -37,7 +37,8 @@ public class DataTest extends TestCase
     public void testMain2()
     {
 
-        Input.main(new String[] { "MusicSurveyDataTest2.csv", "SongListTest2.csv" });
+        Input.main(new String[] { "MusicSurveyDataTest2.csv", 
+            "SongListTest2.csv" });
 
         fileName = "Output2TitleGenreHobby.txt";
 
@@ -47,7 +48,8 @@ public class DataTest extends TestCase
         {
             // Can throw FileNotFoundException
             fileData = new Scanner(new File(fileName));
-        } catch (FileNotFoundException e)
+        } 
+        catch (FileNotFoundException e)
         {
             System.out.println("Scanner error opening the file " + fileName);
             System.out.println(e.getMessage());
@@ -58,7 +60,8 @@ public class DataTest extends TestCase
             output2TitleGenreHobby += fileData.nextLine() + "\n";
         }
 
-        assertFuzzyEquals("Output not as expected for input files " + "MusicSurveyDataTest2.csv and SongListTest2.csv",
+        assertFuzzyEquals("Output not as expected for input files " 
+                + "MusicSurveyDataTest2.csv and SongListTest2.csv",
                 output2TitleGenreHobby, systemOut().getHistory());
 
     }
@@ -75,7 +78,8 @@ public class DataTest extends TestCase
     {
 
         // Notice need to pass in an array of the parameters
-        Input.main(new String[] { "MusicSurveyDataTest1.csv", "SongListTest1.csv" });
+        Input.main(new String[] { "MusicSurveyDataTest1.csv", 
+            "SongListTest1.csv" });
 
         fileName = "Output1TitleGenreHobby.txt";
         String output1TitleGenreHobby = "";
@@ -84,7 +88,8 @@ public class DataTest extends TestCase
         {
             // Can throw FileNotFoundException
             fileData = new Scanner(new File(fileName));
-        } catch (FileNotFoundException e)
+        } 
+        catch (FileNotFoundException e)
         {
             System.out.println("Scanner error opening the file " + fileName);
             System.out.println(e.getMessage());
@@ -96,7 +101,8 @@ public class DataTest extends TestCase
             output1TitleGenreHobby += fileData.nextLine() + "\n";
         }
 
-        assertFuzzyEquals("Output not as expected for input files " + "MusicSurveyDataTest1.csv and SongListTest1.csv",
+        assertFuzzyEquals("Output not as expected for input files " 
+                + "MusicSurveyDataTest1.csv and SongListTest1.csv",
                 output1TitleGenreHobby, systemOut().getHistory());
     }
 
@@ -111,7 +117,8 @@ public class DataTest extends TestCase
     public void testMain3()
     {
 
-        Input.main(new String[] { "MusicSurveyDataNoGenreRepeats.csv", "SongListNoGenreRepeats.csv" });
+        Input.main(new String[] { "MusicSurveyDataNoGenreRepeats.csv", 
+            "SongListNoGenreRepeats.csv" });
 
         fileName = "Output3TitleGenreHobby.txt";
 
@@ -121,7 +128,8 @@ public class DataTest extends TestCase
         {
             // Can throw FileNotFoundException
             fileData = new Scanner(new File(fileName));
-        } catch (FileNotFoundException e)
+        } 
+        catch (FileNotFoundException e)
         {
             System.out.println("Scanner error opening the file " + fileName);
             System.out.println(e.getMessage());
@@ -132,8 +140,10 @@ public class DataTest extends TestCase
             outputTitleGenreHobby += fileData.nextLine() + "\n";
         }
 
-        assertFuzzyEquals("Output not as expected for input files " + "MusicSurveyDataNoGenreRepeats.csv and "
-                + "SongListNoGenreRepeats.csv", outputTitleGenreHobby, systemOut().getHistory());
+        assertFuzzyEquals("Output not as expected for input files " 
+                + "MusicSurveyDataNoGenreRepeats.csv and "
+                + "SongListNoGenreRepeats.csv", outputTitleGenreHobby, 
+                systemOut().getHistory());
 
     }
 }
