@@ -58,24 +58,44 @@ public class AssociateHobby {
     int dataLoc; 
     /**
      * total number of sports people
-     * with non-null responses
+     * who've heard the song
      */
-    int totalSports; 
+    int totalSportsHeard; 
     /**
      * total number of reading people
-     * with non-null responses
+     * who've heard the song
      */
-    int totalRead; 
+    int totalReadHeard; 
     /**
      * total number of music people
-     * with non-null responses
+     * who've heard the song
      */
-    int totalMusic; 
+    int totalMusicHeard; 
     /**
      * total number of art people
-     * with non-null responses
+     * who've heard the song
      */
-    int totalArt;
+    int totalArtHeard;
+    /**
+     * total number of sports people
+     * who liked the song
+     */
+    int totalSportsLike; 
+    /**
+     * total number of reading people
+     * who liked the song
+     */
+    int totalReadLike; 
+    /**
+     * total number of music people
+     * who liked the song
+     */
+    int totalMusicLike; 
+    /**
+     * total number of art people
+     * who liked the song
+     */
+    int totalArtLike;
 
     /**
      * song to collect data for
@@ -104,229 +124,93 @@ public class AssociateHobby {
 
 
     /**
-     * A horrible mess that somehow magically sorts out
-     * all the data and catagorizes it, it's basically 
-     * magic, I'm afraid to touch it at this point but
-     * I'm pretty sure it works... most of the time...
-     * 
-     * I heavily commented this method to try and make
-     * it easier to follow, hope it helps
+     * This disaster of a method parces the data
+     * and keeps track of the total entries for
+     * hearing and liking a song for each hobby
      */
     public void absoluteMonstrocity() {
 
         for (int i = 0; i < people.length; i++) {
-            //Get responses
             Boolean[] response = people[i].getResponses();
             
-            //Do they like sports?
             if (people[i].getHobby().equals("sports")) {
-                //Add to total sports
-                totalSports++;
-                //Have they heard is null?
-                if (response[dataLoc * 2] == null)
+                
+                if (response[dataLoc * 2] != null)
                 {
-                    //If do they like is also null do nothing
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        continue;
-                    }
-                    
-                    //If not null and they like we
-                    //add to heard and like, that's what
-                    //the test you guys gave us said, even
-                    //if this is super stupid
-                    if (response[dataLoc * 2 + 1])
+                    totalSportsHeard++;
+                    if (response[dataLoc * 2])
                     {
                         sportsHeard++;
-                        sportsLike++;
                     }
-                    continue;
-                }
-                //If person heard song is not null
-                else if (response[dataLoc * 2]) {
-                    //add one to heard!
-                    sportsHeard++;
-                    
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        //Remove the one we added earlier
-                        //from total and heard
-                        sportsHeard--;
-                        totalSports--;
-                        continue;
-                    }
-                }
-                //We only get here if heard is not null
-                //Is like null?
-                if (response[dataLoc * 2 + 1] == null)
-                {
-                    //remove form total added earlier
-                    totalSports--;
-                    continue;
                 }
                 
-                //Did they like it?
-                if (response[dataLoc * 2 + 1]) {
-                    //Add one to like!
-                    sportsLike++;
+                if (response[dataLoc * 2 + 1] != null)
+                {
+                    totalSportsLike++;
+                    if (response[dataLoc * 2 + 1])
+                    {
+                        sportsLike++;
+                    }
                 }
             }
             else if (people[i].getHobby().equals("reading")) {
-              //Add to total sports
-                totalRead++;
-                //Have they heard is null?
-                if (response[dataLoc * 2] == null)
+                
+                if (response[dataLoc * 2] != null)
                 {
-                    //If do they like is also null do nothing
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        continue;
-                    }
-                    
-                    //If not null and they like we
-                    //add to heard and like, that's what
-                    //the test you guys gave us said, even
-                    //if this is super stupid
-                    if (response[dataLoc * 2 + 1])
+                    totalReadHeard++;
+                    if (response[dataLoc * 2])
                     {
                         readHeard++;
+                    }
+                }
+                
+                if (response[dataLoc * 2 + 1] != null)
+                {
+                    totalReadLike++;
+                    if (response[dataLoc * 2 + 1])
+                    {
                         readLike++;
                     }
-                    continue;
                 }
-                //If person heard song is not null
-                else if (response[dataLoc * 2]) {
-                    //add one to heard!
-                    readHeard++;
-                    
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        //Remove the one we added earlier
-                        //from total and heard
-                        readHeard--;
-                        totalRead--;
-                        continue;
-                    }
-                }
-                //We only get here if heard is not null
-                //Is like null?
-                if (response[dataLoc * 2 + 1] == null)
-                {
-                    //remove form total added earlier
-                    totalRead--;
-                    continue;
-                }
-                
-                //Did they like it?
-                if (response[dataLoc * 2 + 1]) {
-                    //Add one to like!
-                    readLike++;
-                }
-
             }
             else if (people[i].getHobby().equals("music")) {
-              //Add to total music
-                totalMusic++;
-                //Have they heard is null?
-                if (response[dataLoc * 2] == null)
+                
+                if (response[dataLoc * 2] != null)
                 {
-                    //If do they like is also null do nothing
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        continue;
-                    }
-                    
-                    //If not null and they like we
-                    //add to heard and like, that's what
-                    //the test you guys gave us said, even
-                    //if this is super stupid
-                    if (response[dataLoc * 2 + 1])
+                    totalMusicHeard++;
+                    if (response[dataLoc * 2])
                     {
                         musicHeard++;
-                        musicLike++;
                     }
-                    continue;
-                }
-                //If person heard song is not null
-                else if (response[dataLoc * 2]) {
-                    //add one to heard!
-                    musicHeard++;
-                    
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        //Remove the one we added earlier
-                        //from total and heard
-                        musicHeard--;
-                        totalMusic--;
-                        continue;
-                    }
-                }
-                //We only get here if heard is not null
-                //Is like null?
-                if (response[dataLoc * 2 + 1] == null)
-                {
-                    //remove form total added earlier
-                    totalMusic--;
-                    continue;
                 }
                 
-                //Did they like it?
-                if (response[dataLoc * 2 + 1]) {
-                    //Add one to like!
-                    musicLike++;
-                }
-
-            }
-            else if (people[i].getHobby().equals("art")) {
-              //Add to total art
-                totalArt++;
-                //Have they heard is null?
-                if (response[dataLoc * 2] == null)
+                if (response[dataLoc * 2 + 1] != null)
                 {
-                    //If do they like is also null do nothing
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        continue;
-                    }
-                    
-                    //If not null and they like we
-                    //add to heard and like, that's what
-                    //the test you guys gave us said, even
-                    //if this is super stupid
+                    totalMusicLike++;
                     if (response[dataLoc * 2 + 1])
                     {
-                        artHeard++;
-                        artLike++;
-                    }
-                    continue;
-                }
-                //If person heard song is not null
-                else if (response[dataLoc * 2]) {
-                    //add one to heard!
-                    artHeard++;
-                    
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        //Remove the one we added earlier
-                        //from total and heard
-                        artHeard--;
-                        totalArt--;
-                        continue;
+                        musicLike++;
                     }
                 }
-                //We only get here if heard is not null
-                //Is like null?
-                if (response[dataLoc * 2 + 1] == null)
+            }
+            else {
+                
+                if (response[dataLoc * 2] != null)
                 {
-                    //remove form total added earlier
-                    totalArt--;
-                    continue;
+                    totalArtHeard++;
+                    if (response[dataLoc * 2])
+                    {
+                        artHeard++;
+                    }
                 }
                 
-                //Did they like it?
-                if (response[dataLoc * 2 + 1]) {
-                    //Add one to like!
-                    artLike++;
+                if (response[dataLoc * 2 + 1] != null)
+                {
+                    totalArtLike++;
+                    if (response[dataLoc * 2 + 1])
+                    {
+                        artLike++;
+                    }
                 }
             }
         }
@@ -424,12 +308,12 @@ public class AssociateHobby {
      */
     public int getPercentSportsHeard()
     {
-        if (totalSports == 0)
+        if (totalSportsHeard == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)sportsHeard / (float)totalSports) * 100));
+
+        return (int)(((float)sportsHeard / (float)totalSportsHeard) * 100);
     }
     
     /**
@@ -439,12 +323,12 @@ public class AssociateHobby {
      */
     public int getPercentReadHeard()
     {
-        if (totalRead == 0)
+        if (totalReadHeard == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)readHeard / (float)totalRead) * 100));
+
+        return (int)(((float)readHeard / (float)totalReadHeard) * 100);
     }   
     
     /**
@@ -454,13 +338,12 @@ public class AssociateHobby {
      */
     public int getPercentArtHeard()
     {
-        //System.out.println(song.getTitle() + " " + totalArt + " " + artHeard);
-        if (totalArt == 0)
+        if (totalArtHeard == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)artHeard / (float)totalArt) * 100));
+
+        return (int)(((float)artHeard / (float)totalArtHeard) * 100);
     }   
     
     /**
@@ -470,12 +353,12 @@ public class AssociateHobby {
      */
     public int getPercentMusicHeard()
     {
-        if (totalMusic == 0)
+        if (totalMusicHeard == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)musicHeard / (float)totalMusic) * 100));
+
+        return (int)(((float)musicHeard / (float)totalMusicHeard) * 100);
     }
     
     //*********************PERCET LIKE GETTERS****************************
@@ -486,12 +369,12 @@ public class AssociateHobby {
      */
     public int getPercentSportsLike()
     {
-        if (totalSports == 0)
+        if (totalSportsLike == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)sportsLike / (float)totalSports) * 100));
+
+        return (int)(((float)sportsLike / (float)totalSportsLike) * 100);
     }
 
     /**
@@ -500,12 +383,11 @@ public class AssociateHobby {
      */
     public int getPercentReadLike()
     {
-        if (totalRead == 0)
+        if (totalReadLike == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)readLike / (float)totalRead) * 100));
+        return (int)(((float)readLike / (float)totalReadLike) * 100);
     }
 
     /**
@@ -515,12 +397,12 @@ public class AssociateHobby {
     public int getPercentArtLike()
     {
         
-        if (totalArt == 0)
+        if (totalArtLike == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)artLike / (float)totalArt) * 100));
+
+        return (int)(((float)artLike / (float)totalArtLike) * 100);
     }
 
     /**
@@ -529,21 +411,12 @@ public class AssociateHobby {
      */
     public int getPercentMusicLike()
     {
-        if (totalMusic == 0)
+        if (totalMusicLike == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)musicLike / (float)totalMusic) * 100));
-    }
 
-    
-    /**
-     * returns data as a string
-     * @return a bit of dat just for testing purposes as a string
-     */
-    public String toString() {
-        return "Sports Heard: " + sportsHeard + " | Sports Like: " + sportsLike;
+        return (int)(((float)musicLike / (float)totalMusicLike) * 100);
     }
 
 }

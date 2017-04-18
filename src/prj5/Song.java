@@ -99,16 +99,4 @@ public class Song {
     {
         return dataLoc;
     }
-    
-    /**
-     * returns some basic data as a string, mainly for testing
-     * @return basic data as string
-     */
-    
-    public String toString()
-    {
-        return artist;
-        //return "[" + title + ", " + genre + ", " + artist + ", 
-        //" + year + ", " + dataLoc + "]";
-    }
 }

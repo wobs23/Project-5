@@ -21,15 +21,15 @@ public class AssociateRegion {
      */
     int neLike; 
     /**
-     * number of othering locals that
+     * number of seing locals that
      * heard this song
      */
-    int otherHeard; 
+    int seHeard; 
     /**
-     * number of othering locals that
+     * number of seing locals that
      * like this song
      */
-    int otherLike; 
+    int seLike; 
     /**
      * number of us locals that
      * heard this song
@@ -41,15 +41,15 @@ public class AssociateRegion {
      */
     int usLike;
     /**
-     * number of se locals that
+     * number of other locals that
      * heard this song
      */
-    int seHeard; 
+    int otherHeard; 
     /**
-     * number of se locals that
+     * number of other locals that
      * like this song
      */
-    int seLike; 
+    int otherLike; 
     /**
      * Location of this songs data
      * in the responses array of the
@@ -58,24 +58,44 @@ public class AssociateRegion {
     int dataLoc; 
     /**
      * total number of ne people
-     * with non-null responses
+     * who've heard the song
      */
-    int totalne; 
+    int totalneHeard; 
     /**
-     * total number of othering people
-     * with non-null responses
+     * total number of seing people
+     * who've heard the song
      */
-    int totalother; 
+    int totalseHeard; 
     /**
      * total number of us people
-     * with non-null responses
+     * who've heard the song
      */
-    int totalus; 
+    int totalusHeard; 
     /**
-     * total number of se people
-     * with non-null responses
+     * total number of other people
+     * who've heard the song
      */
-    int totalse;
+    int totalotherHeard;
+    /**
+     * total number of ne people
+     * who liked the song
+     */
+    int totalneLike; 
+    /**
+     * total number of seing people
+     * who liked the song
+     */
+    int totalseLike; 
+    /**
+     * total number of us people
+     * who liked the song
+     */
+    int totalusLike; 
+    /**
+     * total number of other people
+     * who liked the song
+     */
+    int totalotherLike;
 
     /**
      * song to collect data for
@@ -104,229 +124,95 @@ public class AssociateRegion {
 
 
     /**
-     * A horrible mess that somehow magically sorts out
-     * all the data and catagorizes it, it's basically 
-     * magic, I'm afraid to touch it at this point but
-     * I'm pretty sure it works... most of the time...
-     * 
-     * I heavily commented this method to try and make
-     * it easier to follow, hope it helps
+     * This disaster of a method parces the data
+     * and keeps track of the total entries for
+     * hearing and liking a song for each region
      */
     public void absoluteMonstrocity() {
 
         for (int i = 0; i < people.length; i++) {
-            //Get responses
+            
             Boolean[] response = people[i].getResponses();
             
-            //Do they like ne?
-            if (people[i].getRegion().equals("ne")) {
-                //Add to total ne
-                totalne++;
-                //Have they heard is null?
-                if (response[dataLoc * 2] == null)
+            if (people[i].getRegion().equals("Northeast")) {
+                
+                if (response[dataLoc * 2] != null)
                 {
-                    //If do they like is also null do nothing
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        continue;
-                    }
-                    
-                    //If not null and they like we
-                    //add to heard and like, that's what
-                    //the test you guys gave us said, even
-                    //if this is super stupid
-                    if (response[dataLoc * 2 + 1])
+                    totalneHeard++;
+                    if (response[dataLoc * 2])
                     {
                         neHeard++;
+                    }
+                }
+                
+                if (response[dataLoc * 2 + 1] != null)
+                {
+                    totalneLike++;
+                    if (response[dataLoc * 2 + 1])
+                    {
                         neLike++;
                     }
-                    continue;
-                }
-                //If person heard song is not null
-                else if (response[dataLoc * 2]) {
-                    //add one to heard!
-                    neHeard++;
-                    
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        //Remove the one we added earlier
-                        //from total and heard
-                        neHeard--;
-                        totalne--;
-                        continue;
-                    }
-                }
-                //We only get here if heard is not null
-                //Is like null?
-                if (response[dataLoc * 2 + 1] == null)
-                {
-                    //remove form total added earlier
-                    totalne--;
-                    continue;
-                }
-                
-                //Did they like it?
-                if (response[dataLoc * 2 + 1]) {
-                    //Add one to like!
-                    neLike++;
                 }
             }
-            else if (people[i].getRegion().equals("othering")) {
-              //Add to total ne
-                totalother++;
-                //Have they heard is null?
-                if (response[dataLoc * 2] == null)
-                {
-                    //If do they like is also null do nothing
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        continue;
-                    }
-                    
-                    //If not null and they like we
-                    //add to heard and like, that's what
-                    //the test you guys gave us said, even
-                    //if this is super stupid
-                    if (response[dataLoc * 2 + 1])
-                    {
-                        otherHeard++;
-                        otherLike++;
-                    }
-                    continue;
-                }
-                //If person heard song is not null
-                else if (response[dataLoc * 2]) {
-                    //add one to heard!
-                    otherHeard++;
-                    
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        //Remove the one we added earlier
-                        //from total and heard
-                        otherHeard--;
-                        totalother--;
-                        continue;
-                    }
-                }
-                //We only get here if heard is not null
-                //Is like null?
-                if (response[dataLoc * 2 + 1] == null)
-                {
-                    //remove form total added earlier
-                    totalother--;
-                    continue;
-                }
+            else if (people[i].getRegion().equals("Southeast")) {
                 
-                //Did they like it?
-                if (response[dataLoc * 2 + 1]) {
-                    //Add one to like!
-                    otherLike++;
-                }
-
-            }
-            else if (people[i].getRegion().equals("us")) {
-              //Add to total us
-                totalus++;
-                //Have they heard is null?
-                if (response[dataLoc * 2] == null)
+                if (response[dataLoc * 2] != null)
                 {
-                    //If do they like is also null do nothing
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        continue;
-                    }
-                    
-                    //If not null and they like we
-                    //add to heard and like, that's what
-                    //the test you guys gave us said, even
-                    //if this is super stupid
-                    if (response[dataLoc * 2 + 1])
-                    {
-                        usHeard++;
-                        usLike++;
-                    }
-                    continue;
-                }
-                //If person heard song is not null
-                else if (response[dataLoc * 2]) {
-                    //add one to heard!
-                    usHeard++;
-                    
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        //Remove the one we added earlier
-                        //from total and heard
-                        usHeard--;
-                        totalus--;
-                        continue;
-                    }
-                }
-                //We only get here if heard is not null
-                //Is like null?
-                if (response[dataLoc * 2 + 1] == null)
-                {
-                    //remove form total added earlier
-                    totalus--;
-                    continue;
-                }
-                
-                //Did they like it?
-                if (response[dataLoc * 2 + 1]) {
-                    //Add one to like!
-                    usLike++;
-                }
-
-            }
-            else if (people[i].getRegion().equals("se")) {
-              //Add to total se
-                totalse++;
-                //Have they heard is null?
-                if (response[dataLoc * 2] == null)
-                {
-                    //If do they like is also null do nothing
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        continue;
-                    }
-                    
-                    //If not null and they like we
-                    //add to heard and like, that's what
-                    //the test you guys gave us said, even
-                    //if this is super stupid
-                    if (response[dataLoc * 2 + 1])
+                    totalseHeard++;
+                    if (response[dataLoc * 2])
                     {
                         seHeard++;
-                        seLike++;
                     }
-                    continue;
-                }
-                //If person heard song is not null
-                else if (response[dataLoc * 2]) {
-                    //add one to heard!
-                    seHeard++;
-                    
-                    if (response[dataLoc * 2 + 1] == null)
-                    {
-                        //Remove the one we added earlier
-                        //from total and heard
-                        seHeard--;
-                        totalse--;
-                        continue;
-                    }
-                }
-                //We only get here if heard is not null
-                //Is like null?
-                if (response[dataLoc * 2 + 1] == null)
-                {
-                    //remove form total added earlier
-                    totalse--;
-                    continue;
                 }
                 
-                //Did they like it?
-                if (response[dataLoc * 2 + 1]) {
-                    //Add one to like!
-                    seLike++;
+                if (response[dataLoc * 2 + 1] != null)
+                {
+                    totalseLike++;
+                    if (response[dataLoc * 2 + 1])
+                    {
+                        seLike++;
+                    }
+                }
+            }
+            else if (people[i].getRegion().equals("United States "
+                + "(other than Southeast or Northwest)")) {
+                
+                if (response[dataLoc * 2] != null)
+                {
+                    totalusHeard++;
+                    if (response[dataLoc * 2])
+                    {
+                        usHeard++;
+                    }
+                }
+                
+                if (response[dataLoc * 2 + 1] != null)
+                {
+                    totalusLike++;
+                    if (response[dataLoc * 2 + 1])
+                    {
+                        usLike++;
+                    }
+                }
+            }
+            else {
+                
+                if (response[dataLoc * 2] != null)
+                {
+                    totalotherHeard++;
+                    if (response[dataLoc * 2])
+                    {
+                        otherHeard++;
+                    }
+                }
+                
+                if (response[dataLoc * 2 + 1] != null)
+                {
+                    totalotherLike++;
+                    if (response[dataLoc * 2 + 1])
+                    {
+                        otherLike++;
+                    }
                 }
             }
         }
@@ -352,21 +238,21 @@ public class AssociateRegion {
     }
 
     /**
-     * return otherHeard
-     * @return number of othering hobbiest that heard
+     * return seHeard
+     * @return number of seing hobbiest that heard
      * this song
      */
-    public int getotherHeard() {
-        return otherHeard;
+    public int getseHeard() {
+        return seHeard;
     }
 
     /**
-     * return otherHeard
-     * @return number of othering hobbiest that like
+     * return seHeard
+     * @return number of seing hobbiest that like
      * this song
      */
-    public int getotherLike() {
-        return otherLike;
+    public int getseLike() {
+        return seLike;
     }
 
     /**
@@ -388,21 +274,21 @@ public class AssociateRegion {
     }
 
     /**
-     * return seHeard
-     * @return number of se hobbiest that heard
+     * return otherHeard
+     * @return number of other hobbiest that heard
      * this song
      */
-    public int getseHeard() {
-        return seHeard;
+    public int getotherHeard() {
+        return otherHeard;
     }
 
     /**
-     * return seHeard
-     * @return number of se hobbiest that like
+     * return otherHeard
+     * @return number of other hobbiest that like
      * this song
      */
-    public int getseLike() {
-        return seLike;
+    public int getotherLike() {
+        return otherLike;
     }
 
 
@@ -424,42 +310,42 @@ public class AssociateRegion {
      */
     public int getPercentneHeard()
     {
-        if (totalne == 0)
+        if (totalneHeard == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)neHeard / (float)totalne) * 100));
+
+        return (int)(((float)neHeard / (float)totalneHeard) * 100);
     }
     
     /**
-     * gets percentotherHeard
-     * @return percentage of othering locals
-     * that have heard this song
-     */
-    public int getPercentotherHeard()
-    {
-        if (totalother == 0)
-        {
-            return 0;
-        }
-        
-        return Math.round((((float)otherHeard / (float)totalother) * 100));
-    }   
-    
-    /**
      * gets percentseHeard
-     * @return percentage of se locals
+     * @return percentage of seing locals
      * that have heard this song
      */
     public int getPercentseHeard()
     {
-        if (totalse == 0)
+        if (totalseHeard == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)seHeard / (float)totalse) * 100));
+
+        return (int)(((float)seHeard / (float)totalseHeard) * 100);
+    }   
+    
+    /**
+     * gets percentotherHeard
+     * @return percentage of other locals
+     * that have heard this song
+     */
+    public int getPercentotherHeard()
+    {
+        if (totalotherHeard == 0)
+        {
+            return 0;
+        }
+
+        return (int)(((float)otherHeard / (float)totalotherHeard) * 100);
     }   
     
     /**
@@ -469,12 +355,12 @@ public class AssociateRegion {
      */
     public int getPercentusHeard()
     {
-        if (totalus == 0)
+        if (totalusHeard == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)usHeard / (float)totalus) * 100));
+
+        return (int)(((float)usHeard / (float)totalusHeard) * 100);
     }
     
     //*********************PERCET LIKE GETTERS****************************
@@ -485,41 +371,40 @@ public class AssociateRegion {
      */
     public int getPercentneLike()
     {
-        if (totalne == 0)
+        if (totalneLike == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)neLike / (float)totalne) * 100));
+
+        return (int)(((float)neLike / (float)totalneLike) * 100);
     }
 
     /**
-     * @return percentage of othering locals that
-     * like this song
-     */
-    public int getPercentotherLike()
-    {
-        if (totalother == 0)
-        {
-            return 0;
-        }
-        
-        return Math.round((((float)otherLike / (float)totalother) * 100));
-    }
-
-    /**
-     * @return percentage of se locals that
+     * @return percentage of seing locals that
      * like this song
      */
     public int getPercentseLike()
     {
-        
-        if (totalse == 0)
+        if (totalseLike == 0)
         {
             return 0;
         }
+        return (int)(((float)seLike / (float)totalseLike) * 100);
+    }
+
+    /**
+     * @return percentage of other locals that
+     * like this song
+     */
+    public int getPercentotherLike()
+    {
         
-        return Math.round((((float)seLike / (float)totalse) * 100));
+        if (totalotherLike == 0)
+        {
+            return 0;
+        }
+
+        return (int)(((float)otherLike / (float)totalotherLike) * 100);
     }
 
     /**
@@ -528,21 +413,12 @@ public class AssociateRegion {
      */
     public int getPercentusLike()
     {
-        if (totalus == 0)
+        if (totalusLike == 0)
         {
             return 0;
         }
-        
-        return Math.round((((float)usLike / (float)totalus) * 100));
-    }
 
-    
-    /**
-     * returns data as a string
-     * @return a bit of dat just for testing purposes as a string
-     */
-    public String toString() {
-        return "ne Heard: " + neHeard + " | ne Like: " + neLike;
+        return (int)(((float)usLike / (float)totalusLike) * 100);
     }
 
 }

@@ -79,14 +79,4 @@ public class Person {
     {
         return responses;
     }
-    
-    /**
-     * outputs some basic data as a string mainly for testing
-     * @return some data as a string
-     */
-    public String toString()
-    {
-        return "[" + major + ", " + hobby + ", " + region + 
-                ", " + responses.toString() + "]";
-    }
 }

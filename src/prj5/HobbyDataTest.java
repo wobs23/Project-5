@@ -13,7 +13,7 @@ import student.testingsupport.annotations.Hint;
  * @author margaretellis
  * @version 11-12-2015
  */
-public class DataTest extends TestCase
+public class HobbyDataTest extends TestCase
 {
     private String fileName;
     private Scanner fileData;

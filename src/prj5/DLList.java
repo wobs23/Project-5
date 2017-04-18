@@ -164,10 +164,6 @@ public class DLList<E> {
      */
     public void sortArtist()
     {
-        if (size() == 1)
-        {
-            return;
-        }
         
         for (Node<E> begin = head.next(); begin.next() != tail; 
                 begin = begin.next())
@@ -179,7 +175,7 @@ public class DLList<E> {
                 Song smallData = (Song)small.getData();
                 Song checkData = (Song)check.getData();
                 if (checkData.getArtist()
-                        .compareToIgnoreCase(smallData.getArtist()) < 0)
+                        .compareTo(smallData.getArtist()) < 0)
                 {
                     small = check;
                 }
@@ -194,10 +190,6 @@ public class DLList<E> {
      */
     public void sortTitle()
     {
-        if (size() == 1)
-        {
-            return;
-        }
         
         for (Node<E> begin = head.next(); begin.next() != tail; 
                 begin = begin.next())
@@ -209,7 +201,7 @@ public class DLList<E> {
                 Song smallData = (Song)small.getData();
                 Song checkData = (Song)check.getData();
                 if (checkData.getTitle()
-                        .compareToIgnoreCase(smallData.getTitle()) <= 0)
+                        .compareTo(smallData.getTitle()) <= 0)
                 {
                     small = check;
                 }
@@ -224,10 +216,6 @@ public class DLList<E> {
      */
     public void sortGenre()
     {
-        if (size() == 1)
-        {
-            return;
-        }
         
         for (Node<E> begin = head.next(); begin.next() != tail; 
                 begin = begin.next())
@@ -239,7 +227,7 @@ public class DLList<E> {
                 Song smallData = (Song)small.getData();
                 Song checkData = (Song)check.getData();
                 if (checkData.getGenre()
-                        .compareToIgnoreCase(smallData.getGenre()) <= 0)
+                        .compareTo(smallData.getGenre()) <= 0)
                 {
                     small = check;
                 }
@@ -254,11 +242,7 @@ public class DLList<E> {
      */
     public void sortYear()
     {
-        if (size() == 1)
-        {
-            return;
-        }
-        
+       
         for (Node<E> begin = head.next(); begin.next() != tail; 
                 begin = begin.next())
         {
@@ -285,9 +269,6 @@ public class DLList<E> {
      */
     public void swap(Node<E> node1, Node<E> node2)
     {
-        if (node1 == null || node2 == null) {
-            throw new IllegalArgumentException();
-        }
         
         if (node1.previous() == node2) {
             Node<E> temp = node2;
@@ -325,13 +306,6 @@ public class DLList<E> {
             if (node1Next != null) {
                 node1Next.setPrevious(node2);
             }
-        }
-
-        if (node1 == head) {
-            head = node2;
-        } 
-        else if (node2 == head) {
-            head = node1;
         }
     }
 

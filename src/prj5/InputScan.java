@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 /**
  * Takes in and organizes the input from
@@ -29,12 +28,17 @@ public class InputScan
     /**
      * Linked list to hold songs
      */
-    LinkedList<String> songs;
+    DLList<Song> songs;
 
     /**
      * array to hold file input
      */
     String[] survey;
+    
+    /**
+     * Stores data for songs
+     */
+    AssociateData data;
 
     /**
      * takes in file locations and pareses them
@@ -49,14 +53,14 @@ public class InputScan
         songFile = new File(songFileString);
 
         Person[] peopleArray = getPeople(peopleFile);
-        DLList<Song> songList = getSongs(songFile);
+        songs = getSongs(songFile);
         
-        AssociateData data = new AssociateData(peopleArray, songList);
+        data = new AssociateData(peopleArray, songs);
         
         AssociateHobby[] testing = data.getHobbyData();
         
-        songList.sortGenre();
-        Iterator<Song> iter = songList.iterator();
+        songs.sortGenre();
+        Iterator<Song> iter = songs.iterator();
         while (iter.hasNext())
         {
             Song output = (Song)iter.next();
@@ -86,8 +90,8 @@ public class InputScan
             System.out.println();
         }
 
-        iter = songList.iterator();
-        songList.sortTitle();
+        iter = songs.iterator();
+        songs.sortTitle();
         while (iter.hasNext())
         {
             Song output = (Song)iter.next();
@@ -250,6 +254,24 @@ public class InputScan
         }
 
         return returnArray;
+    }
+    
+    /**
+     * gets song list
+     * @return list of songs
+     */
+    public DLList<Song> getSongList()
+    {
+        return songs;
+    }
+    
+    /**
+     * gets the data
+     * @return data for songs
+     */
+    public AssociateData getData()
+    {
+        return data;
     }
 
     /**
