@@ -46,6 +46,7 @@ public class Song {
     
     public String toString()
     {
-        return "[" + title + ", " + genre + ", " + artist + ", " + year + ", " + dataLoc + "]";
+        return artist;
+        //return "[" + title + ", " + genre + ", " + artist + ", " + year + ", " + dataLoc + "]";
     }
 }

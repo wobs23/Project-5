@@ -3,7 +3,7 @@ package prj5;
 public class AssociateRegion {
 
     int seHeard, seLike, neHeard, neLike, usHeard, usLike, otherHeard,
-        otherLike, dataLoc;
+        otherLike, dataLoc, seTotal, neTotal, usTotal, otherTotal;
 
     Song song;
 
@@ -21,51 +21,55 @@ public class AssociateRegion {
 
     public void absoluteMonstrocity() {
         for (int i = 0; i < people.length; i++) {
-            boolean[] response = people[i].getResponses();
-            try {
-                if (people[i].getRegion().equals("Southeast")) {
-                    if (!response[dataLoc * 2]) {
-                        continue;
-                    }
+
+            Boolean[] response = people[i].getResponses();
+            
+            if (response[dataLoc * 2] == null || response[dataLoc * 2 + 1] == null)
+            {
+                continue;
+            }
+           
+            if (people[i].getHobby().equals("Southeast")) {
+                seTotal++;
+                if (response[dataLoc * 2]) {
                     seHeard++;
-                    if (response[dataLoc * 2 + 1]) {
-                        seLike++;
-                    }
                 }
-                else if (people[i].getRegion().equals("Northeast")) {
-                    if (!response[dataLoc * 2]) {
-                        continue;
-                    }
-                    neHeard++;
-                    if (response[dataLoc * 2 + 1]) {
-                        neLike++;
-                    }
-
-                }
-                else if (people[i].getRegion().equals(
-                    "Outside of United States")) {
-                    if (!response[dataLoc * 2]) {
-                        continue;
-                    }
-                    usHeard++;
-                    if (response[dataLoc * 2 + 1]) {
-                        usLike++;
-                    }
-
-                }
-                else if (people[i].getRegion().equals(
-                    "United States (other than Southeast or Northwest)")) {
-                    if (!response[dataLoc * 2]) {
-                        continue;
-                    }
-                    otherHeard++;
-                    if (response[dataLoc * 2 + 1]) {
-                        otherLike++;
-                    }
+                
+                if (response[dataLoc * 2 + 1]) {
+                    seLike++;
                 }
             }
-            catch (Exception e) {
-                e.printStackTrace();
+            else if (people[i].getHobby().equals("Northeast")) {
+                neTotal++;
+                if (response[dataLoc * 2]) {
+                    neHeard++;
+                }
+                
+                if (response[dataLoc * 2 + 1]) {
+                    neLike++;
+                }
+
+            }
+            else if (people[i].getHobby().equals("United States (other than Southeast or Northwest)")) {
+                usTotal++;
+                if (response[dataLoc * 2]) {
+                    usHeard++;
+                }
+                
+                if (response[dataLoc * 2 + 1]) {
+                    usLike++;
+                }
+
+            }
+            else if (people[i].getHobby().equals("Outside of United States")) {
+                otherTotal++;
+                if (response[dataLoc * 2]) {
+                    otherHeard++;
+                }
+                
+                if (response[dataLoc * 2 + 1]) {
+                    otherLike++;
+                }
             }
         }
     }

@@ -3,7 +3,7 @@ package prj5;
 public class AssociateMajor {
 
     int csHeard, csLike, mathHeard, mathLike, engeHeard, engeLike, otherHeard,
-        otherLike, dataLoc;
+        otherLike, dataLoc, totalCS, totalMath, totalEnge, totalOther;
 
     Song song;
 
@@ -21,51 +21,55 @@ public class AssociateMajor {
 
     public void absoluteMonstrocity() {
         for (int i = 0; i < people.length; i++) {
-            boolean[] response = people[i].getResponses();
-            try {
-                if (people[i].getMajor().equals("Computer Science")) {
-                    if (!response[dataLoc * 2]) {
-                        continue;
-                    }
+
+            Boolean[] response = people[i].getResponses();
+            
+            if (response[dataLoc * 2] == null || response[dataLoc * 2 + 1] == null)
+            {
+                continue;
+            }
+           
+            if (people[i].getHobby().equals("Computer Science")) {
+                totalCS++;
+                if (response[dataLoc * 2]) {
                     csHeard++;
-                    if (response[dataLoc * 2 + 1]) {
-                        csLike++;
-                    }
                 }
-                else if (people[i].getMajor().equals("Math or CMDA")) {
-                    if (!response[dataLoc * 2]) {
-                        continue;
-                    }
-                    mathHeard++;
-                    if (response[dataLoc * 2 + 1]) {
-                        mathLike++;
-                    }
-
-                }
-                else if (people[i].getMajor().equals(
-                    "Other")) {
-                    if (!response[dataLoc * 2]) {
-                        continue;
-                    }
-                    otherHeard++;
-                    if (response[dataLoc * 2 + 1]) {
-                        otherLike++;
-                    }
-
-                }
-                else if (people[i].getMajor().equals(
-                    "Other Engineering")) {
-                    if (!response[dataLoc * 2]) {
-                        continue;
-                    }
-                    engeHeard++;
-                    if (response[dataLoc * 2 + 1]) {
-                        engeLike++;
-                    }
+                
+                if (response[dataLoc * 2 + 1]) {
+                    csLike++;
                 }
             }
-            catch (Exception e) {
-                e.printStackTrace();
+            else if (people[i].getHobby().equals("Math or CMDA")) {
+                totalMath++;
+                if (response[dataLoc * 2]) {
+                    mathHeard++;
+                }
+                
+                if (response[dataLoc * 2 + 1]) {
+                    mathLike++;
+                }
+
+            }
+            else if (people[i].getHobby().equals("Other Engineering")) {
+                totalEnge++;
+                if (response[dataLoc * 2]) {
+                    engeHeard++;
+                }
+                
+                if (response[dataLoc * 2 + 1]) {
+                    engeLike++;
+                }
+
+            }
+            else if (people[i].getHobby().equals("Other")) {
+                totalOther++;
+                if (response[dataLoc * 2]) {
+                    otherHeard++;
+                }
+                
+                if (response[dataLoc * 2 + 1]) {
+                    otherLike++;
+                }
             }
         }
     }

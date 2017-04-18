@@ -8,9 +8,9 @@ public class Person {
     
     String region;
     
-    boolean[] responses;
+    Boolean[] responses;
     
-    public Person(String hobby, String major, String region, boolean[] responses)
+    public Person(String hobby, String major, String region, Boolean[] responses)
     {
         this.hobby = hobby;
         this.major = major;
@@ -33,7 +33,7 @@ public class Person {
         return region;
     }
     
-    public boolean[] getResponses()
+    public Boolean[] getResponses()
     {
         return responses;
     }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import student.TestCase;
 import student.testingsupport.annotations.Hint;
 
 /**
@@ -12,7 +13,7 @@ import student.testingsupport.annotations.Hint;
  * @author margaretellis
  * @version 11-12-2015
  */
-public class InputReferenceTest3 extends student.TestCase
+public class DataTest extends TestCase
 {
     private String fileName;
     private Scanner fileData;
@@ -50,7 +51,6 @@ public class InputReferenceTest3 extends student.TestCase
         {
             System.out.println("Scanner error opening the file " + fileName);
             System.out.println(e.getMessage());
-
         }
 
         while (fileData.hasNextLine())
@@ -104,8 +104,8 @@ public class InputReferenceTest3 extends student.TestCase
      * Test the program with the actual class survey data Gathers the output
      * from StdOut and compares it to the expect output as stored in
      * OutputTitleGenreHobby.txt
-     * 
      */
+     
     @Hint("The main method is not working properly with input files "
             + "MusicSurveyDataNoGenreRepeats.csv and SongLisNoGenreRepeats.csv")
     public void testMain3()
@@ -136,5 +136,4 @@ public class InputReferenceTest3 extends student.TestCase
                 + "SongListNoGenreRepeats.csv", outputTitleGenreHobby, systemOut().getHistory());
 
     }
-
 }

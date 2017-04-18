@@ -4,7 +4,7 @@ public class AssociateData {
     
     Person[] people;
     
-    Song[] songs;
+    DLList<Song> songs;
     
     AssociateMajor[] major;
     
@@ -12,7 +12,7 @@ public class AssociateData {
     
     AssociateRegion[] region;
     
-    public AssociateData(Person[] people, Song[] songs)
+    public AssociateData(Person[] people, DLList<Song> songs)
     {
         major = new AssociateMajor[59];
         hobby = new AssociateHobby[59];
@@ -25,13 +25,13 @@ public class AssociateData {
     
     public void createArrays()
     {
-        for (int i = 0; i < songs.length; i++)
+        for (int i = 0; i < songs.size(); i++)
         {
-            major[i] = new AssociateMajor(songs[i], people);
+            major[i] = new AssociateMajor(songs.get(i), people);
 
-            hobby[i] = new AssociateHobby(songs[i], people);
+            hobby[i] = new AssociateHobby(songs.get(i), people);
             
-            region[i] = new AssociateRegion(songs[i], people);
+            region[i] = new AssociateRegion(songs.get(i), people);
         }
     }
     
