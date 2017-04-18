@@ -20,7 +20,7 @@ public class InputScan {
     String[] survey;
 
 
-    public InputScan(String peopleFileString, String songFileString) throws FileNotFoundException {
+    public InputScan(String peopleFileString, String songFileString) {
         peopleFile = new File(peopleFileString);
         songFile = new File(songFileString);
 
