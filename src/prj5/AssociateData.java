@@ -42,9 +42,9 @@ public class AssociateData {
      */
     public AssociateData(Person[] people, DLList<Song> songs)
     {
-        major = new AssociateMajor[59];
-        hobby = new AssociateHobby[59];
-        region = new AssociateRegion[59];
+        major = new AssociateMajor[59]; //62
+        hobby = new AssociateHobby[59];//62
+        region = new AssociateRegion[59];//62
         this.people = people;
         this.songs = songs;
         

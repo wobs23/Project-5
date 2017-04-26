@@ -10,17 +10,17 @@ public class Song {
     /**
      * string for title
      */
-    String title;
+    private String title;
     
     /**
      * string for genre
      */
-    String genre;
+    private String genre;
     
     /**
      * string for artist
      */
-    String artist;
+    private String artist;
     
     /**
      * int for year

@@ -12,6 +12,7 @@ import java.util.Iterator;
  * @version 2017.4.18
  * 
  */
+//176 215
 public class InputScan
 {
 
@@ -173,7 +174,7 @@ public class InputScan
      */
     private Person[] getPeople(File peopleFileToRead)
     {
-        Person[] arrayOfPersons = new Person[209];
+        Person[] arrayOfPersons = new Person[209]; //209 228
         BufferedReader br;
         String line = "";
         String cvsSplitBy = ",";
@@ -212,7 +213,7 @@ public class InputScan
                     continue;
                 }
 
-                Boolean[] responses = new Boolean[118];
+                Boolean[] responses = new Boolean[118]; //118 124
                 for (int i = 5; i < surveyData.length; i++)
                 {
                     String temp = surveyData[i];
