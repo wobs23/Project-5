@@ -61,66 +61,7 @@ public class InputScan
         AssociateHobby[] testing = data.getHobbyData();
         
         songs.sortGenre();
-        Iterator<Song> iter = songs.iterator();
-        while (iter.hasNext())
-        {
-            Song output = (Song)iter.next();
-            System.out.println("song title " + output.getTitle());
-            System.out.println("song artist " + output.getArtist());
-            System.out.println("song genre " + output.getGenre());
-            System.out.println("song year " + output.getYear());
-            System.out.println("heard");
-            System.out.println("reading" + testing[output.getDataLoc()]
-                    .getPercentReadHeard() + 
-                    " art" + testing[output.getDataLoc()]
-                            .getPercentArtHeard() + 
-                    " sports" + testing[output.getDataLoc()]
-                            .getPercentSportsHeard() + 
-                    " music" + testing[output.getDataLoc()]
-                            .getPercentMusicHeard());
-            System.out.println("likes");
-            System.out.println("reading" + testing[output.getDataLoc()]
-                    .getPercentReadLike() + 
-                    " art" + testing[output.getDataLoc()]
-                            .getPercentArtLike() + 
-                    " sports" + testing[output.getDataLoc()]
-                            .getPercentSportsLike() + 
-                    " music" + testing[output.getDataLoc()]
-                            .getPercentMusicLike());
-
-            System.out.println();
-        }
-
-        iter = songs.iterator();
-        songs.sortTitle();
-        while (iter.hasNext())
-        {
-            Song output = (Song)iter.next();
-            System.out.println("song title " + output.getTitle());
-            System.out.println("song artist " + output.getArtist());
-            System.out.println("song genre " + output.getGenre());
-            System.out.println("song year " + output.getYear());
-            System.out.println("heard");
-            System.out.println("reading" + testing[output.getDataLoc()]
-                    .getPercentReadHeard() + 
-                    " art" + testing[output.getDataLoc()]
-                            .getPercentArtHeard() + 
-                    " sports" + testing[output.getDataLoc()]
-                            .getPercentSportsHeard() + 
-                    " music" + testing[output.getDataLoc()]
-                            .getPercentMusicHeard());
-            System.out.println("likes");
-            System.out.println("reading" + testing[output.getDataLoc()]
-                    .getPercentReadLike() + 
-                    " art" + testing[output.getDataLoc()]
-                            .getPercentArtLike() + 
-                    " sports" + testing[output.getDataLoc()]
-                            .getPercentSportsLike() + 
-                    " music" + testing[output.getDataLoc()]
-                            .getPercentMusicLike());
-
-            System.out.println();
-        }
+        
         
 
         // System.out.println(data.getHobbyData()[0].toString());
