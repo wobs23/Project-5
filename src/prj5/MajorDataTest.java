@@ -22,11 +22,11 @@ public class MajorDataTest extends TestCase
     public void testMain2()
     {
 
-        Input.main(new String[] { "MusicSurveyDataTest2.csv", 
-            "SongListTest2.csv" });
+        InputScan input = new InputScan("MusicSurveyDataTest2.csv", 
+            "SongListTest2.csv");
 
                 
-        AssociateData data = Input.input.getData();
+        AssociateData data = input.getData();
         AssociateMajor[] major = data.getMajorData();
         
         assertEquals(major[0].getcsHeard(), 1);
@@ -59,10 +59,10 @@ public class MajorDataTest extends TestCase
     public void testMain3()
     {
 
-        Input.main(new String[] { "MusicSurveyDataNoGenreRepeats.csv", 
-            "SongListNoGenreRepeats.csv" });
+        InputScan input = new InputScan("MusicSurveyDataNoGenreRepeats.csv", 
+            "SongListNoGenreRepeats.csv");
 
-        AssociateData data = Input.input.getData();
+        AssociateData data = input.getData();
         AssociateMajor[] major = data.getMajorData();
         
         assertEquals(major[0].getcsHeard(), 37);
