@@ -3,7 +3,6 @@ package prj5;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.Iterator;
 
 /**
  * Takes in and organizes the input from
@@ -58,15 +57,7 @@ public class InputScan
         
         data = new AssociateData(peopleArray, songs);
         
-        AssociateHobby[] testing = data.getHobbyData();
-        
         songs.sortGenre();
-        
-        
-
-        // System.out.println(data.getHobbyData()[0].toString());
-        // System.out.println(data.getMajorData()[0].toString());
-        // System.out.println(data.getRegionData()[0].toString());
     }
 
     /**

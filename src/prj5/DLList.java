@@ -161,6 +161,7 @@ public class DLList<E> {
     
     /**
      * sorts the linked list by Artist of song
+     * @return list sorted by artist
      */
     public DLList<Song> sortArtist()
     {
@@ -189,7 +190,7 @@ public class DLList<E> {
     
     /**
      * sorts the linked list by title of song
-     * @return 
+     * @return list sorted by title
      */
     public DLList<Song> sortTitle()
     {
@@ -217,7 +218,7 @@ public class DLList<E> {
     
     /**
      * sorts linked list by genre of song
-     * @return 
+     * @return list sorted by genre
      */
     public DLList<Song> sortGenre()
     {
@@ -245,7 +246,7 @@ public class DLList<E> {
     
     /**
      * sorts linked list by year of song
-     * @return 
+     * @return list sorted by year
      */
     public DLList<Song> sortYear()
     {

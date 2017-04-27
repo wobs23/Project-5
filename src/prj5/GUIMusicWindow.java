@@ -9,24 +9,163 @@ import CS2114.WindowSide;
 
 public class GUIMusicWindow {
 
+    /**
+     * horizontal offset for songs
+     */
     int offsetX = 300;
+    
+    /**
+     * vertical offset for songs
+     */
     int offsetY = 320;
-    private Button prev, sortByArtist, sortByTitle, sortByYear, sortByGenre,
-        next, repHobby, repMajor, repRegion, quit;
-    private Window window;
-    private InputScan input;
-    private Shape divisor, legend;
-    private TextShape titleLegend, activity1, activity2, activity3, activity4,
-        songTitle, heard, likes;
-    private Boolean initialized;
+    
+    /**
+     * button for previous page
+     */
+    Button prev;
+    
+    /**
+     * button to sort by artist
+     */
+    Button sortByArtist;
+    
+    /**
+     * button to sort by title
+     */
+    Button sortByTitle;
+    
+    /**
+     * button to sort by year
+     */
+    Button sortByYear;
+    
+    /**
+     * button to sort by genre
+     */
+    Button sortByGenre;
+    
+    /**
+     * button to go to next page
+     */
+    Button next;
+    
+    /**
+     * button to represent hobby data
+     */
+    Button repHobby; 
+    /**
+     * button to represent major data
+     */
+    Button repMajor; 
+    
+    /**
+     * button to represent region data
+     */
+    Button repRegion; 
+    
+    /**
+     * button to close program
+     */
+    Button quit;
+    
+    /**
+     * main window to draw shapes
+     */
+    Window window;
+    
+    /**
+     * object that reads in input and generates data
+     */
+    InputScan input;
+    
+    /**
+     * divider shape in legend
+     */
+    Shape divisor;
+    
+    /**
+     * shape that makes up legend
+     */
+    Shape legend;
+    
+    /**
+     * title for legend
+     */
+    TextShape titleLegend;
+    
+    /**
+     * first descirptor to display
+     * (region/major/hobby first output)
+     */
+    TextShape activity1;
+    
+    /**
+     * second discriptor to display
+     * (region/major/hobby second output)
+     */
+    TextShape activity2;
+    
+    /**
+     * third descirptor to display
+     * (region/major/hobby third output)
+     */
+    TextShape activity3;
+    
+    /**
+     * third descirptor to display
+     * (region/major/hobby third output)
+     */
+    TextShape activity4;
+    
+    /**
+     * title of song
+     */
+    TextShape songTitle;
+    
+    /**
+     * literal word "heard" for legend
+     */
+    TextShape heard;
+    
+    /**
+     * word for legend "likes"
+     */
+    TextShape likes;
+    
+    /**
+     * have they clicked a represent button yet?
+     */
+    Boolean initialized;
+    
+    /**
+     * song we are on
+     */
     private int counter;
+    
+    /**
+     * what we are sorted by
+     */
     private int represent = 0;
-    DisplayGlyph[] display;
+    
+    /**
+     * array of the 9 display glyphs
+     * on screen at a time
+     */
+    GUIDisplayGlyph[] display;
+    
+    /**
+     * what are representing?
+     * (region/major/hobby)
+     */
     int modeChecker = 0;
 
-
+    /**
+     * initilizes all the values
+     * @param musicFile music file to read from
+     * @param songFile song file to read from
+     */
     public GUIMusicWindow(String musicFile, String songFile) {
-        display = new DisplayGlyph[9];
+        display = new GUIDisplayGlyph[9];
         counter = 0;
 
         initialized = false;
@@ -83,7 +222,9 @@ public class GUIMusicWindow {
         prev.disable();
     }
 
-
+    /**
+     * creaetes the displayglyphes
+     */
     public void populateDisplayGlyphs() {
         if (initialized) {
             Song song;
@@ -105,7 +246,7 @@ public class GUIMusicWindow {
                 if (display[i] != null) {
                     display[i].removeShapes(window);
                 }
-                display[i] = new DisplayGlyph(song.getTitle(), song.getArtist(),
+                display[i] = new GUIDisplayGlyph(song.getTitle(), song.getArtist(),
                     song.getYear(), song.getGenre(), song, input, modeChecker);
             }
 
@@ -113,7 +254,11 @@ public class GUIMusicWindow {
         }
     }
 
-
+    /**
+     * draws the display glyphs
+     * @param stopAt if page is not complete with
+     * 9 entries this tlls us when to stop
+     */
     public void drawDisplayGlyphs(int stopAt) {
         for (int i = 0; i < stopAt; i++) {
             display[i].drawGlyph(window, offsetX * (i % 3), offsetY * (i / 3),
@@ -122,6 +267,10 @@ public class GUIMusicWindow {
     }
 
 
+    /**
+     * initializes everything after a representation
+     * has been selected
+     */
     public void initialize() {
 
         // Legend set up
@@ -161,11 +310,18 @@ public class GUIMusicWindow {
     }
 
 
+    /**
+     * quits program
+     * @param b button pressed
+     */
     public void clickedQuit(Button b) {
         System.exit(0);
     }
 
-
+    /**
+     * goes to next page
+     * @param b button pressed
+     */
     public void clickedPrev(Button b) {
 
         counter -= 9;
@@ -181,7 +337,10 @@ public class GUIMusicWindow {
         populateDisplayGlyphs();
     }
 
-
+    /**
+     * sorts by artist
+     * @param b button pressed
+     */
     public void clickedSortByArtist(Button b) {
         represent = 0;
         counter = 0;
@@ -193,7 +352,10 @@ public class GUIMusicWindow {
         populateDisplayGlyphs();
     }
 
-
+    /**
+     * sorts by title
+     * @param b button pressed
+     */
     public void clickedSortByTitle(Button b) {
         represent = 0;
         counter = 0;
@@ -206,7 +368,10 @@ public class GUIMusicWindow {
 
     }
 
-
+    /**
+     * sorts by year
+     * @param b button pressed
+     */
     public void clickedSortByYear(Button b) {
         represent = 1;
         counter = 0;
@@ -219,7 +384,10 @@ public class GUIMusicWindow {
 
     }
 
-
+    /**
+     * sorts by genre
+     * @param b button pressed
+     */
     public void clickedSortByGenre(Button b) {
         represent = 2;
         counter = 0;
@@ -231,7 +399,10 @@ public class GUIMusicWindow {
         populateDisplayGlyphs();
     }
 
-
+    /**
+     * goes to next page
+     * @param b button pressed
+     */
     public void clickedNext(Button button) {
         counter += 9;
         System.out.println(counter);
@@ -247,7 +418,10 @@ public class GUIMusicWindow {
 
     }
 
-
+    /**
+     * represents hobby data
+     * @param b button pressed
+     */
     public void clickedRepHobby(Button b) {
         modeChecker = -1;
         
@@ -260,7 +434,10 @@ public class GUIMusicWindow {
         populateDisplayGlyphs();
     }
 
-
+    /**
+     * represents major data
+     * @param b button pressed
+     */
     public void clickedRepMajor(Button b) {
         modeChecker = 0;
         
@@ -273,7 +450,10 @@ public class GUIMusicWindow {
         populateDisplayGlyphs();
     }
 
-
+    /**
+     * represents region data
+     * @param b button pressed
+     */
     public void clickedRepRegion(Button b) {
         modeChecker = 1;
         
@@ -286,6 +466,10 @@ public class GUIMusicWindow {
         populateDisplayGlyphs();
     }
     
+    /**
+     * updates legend when hobbyRep button
+     * has been pressed
+     */
     public void updateLegendHobby()
     {
         if (activity1 != null)
@@ -317,6 +501,10 @@ public class GUIMusicWindow {
         window.moveToFront(activity4);
     }
     
+    /**
+     * updates legend when regionRep button
+     * has been pressed
+     */
     public void updateLegendRegion()
     {
         if (activity1 != null)
@@ -348,6 +536,10 @@ public class GUIMusicWindow {
         window.moveToFront(activity4);
     }
     
+    /**
+     * updates legend when majorRep button
+     * has been pressed
+     */
     public void updateLegendMajor()
     {
         if (activity1 != null)
