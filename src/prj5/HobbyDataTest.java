@@ -37,9 +37,9 @@ public class HobbyDataTest extends TestCase
     public void testMain2()
     {
 
-        new InputScan("MusicSurveyDataTest2.csv", 
-            "SongListTest2.csv");
-        
+        Input.main(new String[] { "MusicSurveyDataTest2.csv", 
+            "SongListTest2.csv" });
+
         fileName = "Output2TitleGenreHobby.txt";
 
         String output2TitleGenreHobby = "";
@@ -78,8 +78,8 @@ public class HobbyDataTest extends TestCase
     {
 
         // Notice need to pass in an array of the parameters
-        new InputScan("MusicSurveyDataTest1.csv", 
-            "SongListTest1.csv");
+        Input.main(new String[] { "MusicSurveyDataTest1.csv", 
+            "SongListTest1.csv" });
 
         fileName = "Output1TitleGenreHobby.txt";
         String output1TitleGenreHobby = "";
@@ -117,8 +117,8 @@ public class HobbyDataTest extends TestCase
     public void testMain3()
     {
 
-        new InputScan("MusicSurveyDataNoGenreRepeats.csv", 
-            "SongListNoGenreRepeats.csv");
+        Input.main(new String[] { "MusicSurveyDataNoGenreRepeats.csv", 
+            "SongListNoGenreRepeats.csv" });
 
         fileName = "Output3TitleGenreHobby.txt";
 

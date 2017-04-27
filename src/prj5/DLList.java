@@ -161,9 +161,8 @@ public class DLList<E> {
     
     /**
      * sorts the linked list by Artist of song
-     * @return list sorted by artist
      */
-    public DLList<Song> sortArtist()
+    public void sortArtist()
     {
         
         for (Node<E> begin = head.next(); begin.next() != tail; 
@@ -184,15 +183,12 @@ public class DLList<E> {
             swap(small, begin);
             begin = small;
         }
-        
-        return (DLList<Song>)this;
     }
     
     /**
      * sorts the linked list by title of song
-     * @return list sorted by title
      */
-    public DLList<Song> sortTitle()
+    public void sortTitle()
     {
         
         for (Node<E> begin = head.next(); begin.next() != tail; 
@@ -213,14 +209,12 @@ public class DLList<E> {
             swap(small, begin);
             begin = small;
         }
-        return (DLList<Song>)this;
     }
     
     /**
      * sorts linked list by genre of song
-     * @return list sorted by genre
      */
-    public DLList<Song> sortGenre()
+    public void sortGenre()
     {
         
         for (Node<E> begin = head.next(); begin.next() != tail; 
@@ -241,14 +235,12 @@ public class DLList<E> {
             swap(small, begin);
             begin = small;
         }
-        return (DLList<Song>)this;
     }
     
     /**
      * sorts linked list by year of song
-     * @return list sorted by year
      */
-    public DLList<Song> sortYear()
+    public void sortYear()
     {
        
         for (Node<E> begin = head.next(); begin.next() != tail; 
@@ -268,7 +260,6 @@ public class DLList<E> {
             swap(small, begin);
             begin = small;
         }
-        return (DLList<Song>)this;
     }
     
     /**

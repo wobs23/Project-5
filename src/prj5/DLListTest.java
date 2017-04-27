@@ -110,9 +110,10 @@ public class DLListTest extends TestCase {
      */
     public void testSorts()
     {
-        DLList<Song> songList = new InputScan(
-            "MusicSurveyDataNoGenreRepeats.csv", 
-            "SongListNoGenreRepeats.csv").getSongList();
+        Input.main(new String[] { "MusicSurveyDataNoGenreRepeats.csv", 
+            "SongListNoGenreRepeats.csv" });
+        
+        DLList<Song> songList = Input.input.getSongList();
         
         songList.sortArtist();
         Song song = (Song)songList.get(0);
